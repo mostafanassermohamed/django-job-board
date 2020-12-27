@@ -1,17 +1,17 @@
 {% extends  'base.html' %}
-
+{% load bootstrap4 %}
 
 
 {% block body%}
 
 
     <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_2">
+    <div class="bradcam_area bradcam_bg_1">
         <div class="container">
             <div class="row">
-                <div class="col-xl-11">
+                <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h4>Software Engineer</h3>
+                        <h3>{{job_detail}}</h3>
                     </div>
                 </div>
             </div>
@@ -22,21 +22,21 @@
     <div class="job_details_area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-7">
+                <div class="col-lg-8">
                     <div class="job_details_header">
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/2.svg" alt="">
+                                    <img src="img/svg_icon/1.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href="#"><h5>Software Engineer</h4></a>
+                                    <a href="#"><h4>{{job_detail}}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
                                             <p> <i class="fa fa-map-marker"></i> California, USA</p>
                                         </div>
                                         <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                            <p> <i class="fa fa-clock-o"></i>  {{job.job_type}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -50,92 +50,41 @@
                     </div>
                     <div class="descript_wrap white-bg">
                         <div class="single_wrap">
-                            <h5>Job description</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
-                            <p>Variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
-                        </div>
-                        <div class="single_wrap">
-                            <h5>Responsibility</h4>
-                            <ul>
-                                <li>The applicants should have experience in the following areas.
-                                </li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
-                            </ul>
-                        </div>
-                        <div class="single_wrap">
-                            <h5>Qualifications</h4>
-                            <ul>
-                                <li>The applicants should have experience in the following areas.
-                                </li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
-                            </ul>
-                        </div>
-                        <div class="single_wrap">
-                            <h5>Benefits</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
+                            <h4>Job description</h4>
+                            <p>{{job_detail.description}}</p>
                         </div>
                     </div>
+
+
                     <div class="apply_job_form white-bg">
-                        <h5>Apply for the job</h4>
-                        <form action="#">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="input_field">
-                                        <input type="text" placeholder="Your name">
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="input_field">
-                                        <input type="text" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="input_field">
-                                        <input type="text" placeholder="Website/Portfolio link">
-                                    </div>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                          <button type="button" id="inputGroupFileAddon04"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                          </button>
-                                        </div>
-                                        <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon03">
-                                          <label class="custom-file-label" for="inputGroupFile04">Upload CV</label>
-                                        </div>
-                                      </div>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="input_field">
-                                        <textarea name="#" id="" cols="31" rows="10" placeholder="Coverletter"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-11">
-                                    <div class="submit_btn">
-                                        <button class="boxed-btn4 w-100" type="submit">Apply Now</button>
-                                    </div>
-                                </div>
-                            </div>
+                        <h4>Apply for the job</h4>
+                        
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                             {% bootstrap_form form %}
+                             {% buttons %}
+                             <button class="boxed-btn3 w-100" type="submit">Apply Now</button>
+                            {% endbuttons %}
+                           
                         </form>
+
+
                     </div>
+
+
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="job_sumary">
                         <div class="summery_header">
-                            <h4>Job Summery</h3>
+                            <h3>Job Summery</h3>
                         </div>
                         <div class="job_content">
                             <ul>
-                                <li>Published on: <span>13 Nov, 2019</span></li>
-                                <li>Vacancy: <span>3 Position</span></li>
-                                <li>Salary: <span>51k - 120k/y</span></li>
+                                <li>Published on: <span>{{job_detail.published_at|date:'d M o'}}</span></li>
+                                <li>Vacancy: <span>{{job_detail.vacancy}}</span></li>
+                                <li>Salary: <span>{{job_detail.sallary}}/y</span></li>
                                 <li>Location: <span>California, USA</span></li>
-                                <li>Job Nature: <span> Full-time</span></li>
+                                <li>Job Nature: <span>{{job_detail.job_type}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -150,30 +99,30 @@
                     </div>
                     <div class="job_location_wrap">
                         <div class="job_lok_inner">
-                            <div id="map" style="height: 201px;"></div>
+                            <div id="map" style="height: 200px;"></div>
                             <script>
                               function initMap() {
-                                var uluru = {lat: -24.363, lng: 131.044};
+                                var uluru = {lat: -25.363, lng: 131.044};
                                 var grayStyles = [
                                   {
                                     featureType: "all",
                                     stylers: [
-                                      { saturation: -89 },
-                                      { lightness: 51 }
+                                      { saturation: -90 },
+                                      { lightness: 50 }
                                     ]
                                   },
-                                  {elementType: 'labels.text.fill', stylers: [{color: '#ccdee10'}]}
+                                  {elementType: 'labels.text.fill', stylers: [{color: '#ccdee9'}]}
                                 ];
                                 var map = new google.maps.Map(document.getElementById('map'), {
-                                  center: {lat: -30.197, lng: 150.744},
-                                  zoom: 10,
+                                  center: {lat: -31.197, lng: 150.744},
+                                  zoom: 9,
                                   styles: grayStyles,
                                   scrollwheel:  false
                                 });
                               }
                               
                             </script>
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS2oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
+                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
                             
                           </div>
                     </div>
@@ -182,4 +131,10 @@
         </div>
     </div>
 
-{% endblock body %}
+
+    {% endblock body %}
+
+
+
+    
+    
